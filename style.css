@@ -1,0 +1,51 @@
+
+:root{--primary:#0b74de;--muted:#f6f9ff;--danger:#d93025}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Roboto,Arial,Helvetica,sans-serif;margin:0;background:#f3f6fb;color:#111}
+.navbar{display:flex;gap:6px;background:var(--primary);color:#fff;padding:10px;position:sticky;top:0;z-index:20;align-items:center}
+.nav-btn{background:none;border:none;color:#fff;padding:8px 12px;border-radius:6px;font-weight:600;cursor:pointer}
+.nav-btn.active{background:rgba(255,255,255,0.12);text-decoration:underline}
+.container{max-width:1100px;margin:18px auto;padding:0 14px}
+.card{background:#fff;border-radius:10px;padding:14px;margin-bottom:18px;box-shadow:0 6px 18px rgba(12,35,64,0.04)}
+h2{margin:0 0 12px 0}
+input,select,button,textarea{padding:8px;border:1px solid #d6e1f5;border-radius:8px;box-sizing:border-box}
+button{background:var(--primary);color:#fff;border:none;cursor:pointer;padding:8px 10px}
+button.ghost{background:#fff;color:var(--primary);border:1px solid var(--primary)}
+.small{padding:6px;font-size:13px}
+.grid{display:grid;gap:12px}
+.columns-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.dashboard-box{background:var(--muted);padding:12px;border-radius:10px;text-align:center;font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{padding:8px;border:1px solid #eef4fb;text-align:center;font-size:14px}
+th{background:#fbfdff}
+.low-stock{background:#fff0f0;color:var(--danger);font-weight:700}
+.actions button{margin:3px}
+@media(max-width:720px){ .navbar{overflow:auto} th,td{font-size:12px;padding:6px} }
+
+/* Login overlay */
+#loginOverlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:60}
+#loginCard{width:340px;padding:18px;border-radius:10px;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+#loginCard h3{margin:0 0 8px 0;text-align:center}
+.notice{font-size:13px;color:#666;margin-bottom:8px}
+
+/* Receipt narrow style */
+.receipt{font-family:monospace;font-size:12px}
+.receipt table{width:100%;border-collapse:collapse}
+.receipt td, .receipt th{padding:2px;text-align:left}
+
+/* header */
+.header {
+  position: relative;
+  background-image: url('GTM1.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24vh;
+  min-height: 120px;
+  display:flex;align-items:center;padding:12px 20px;border-radius:8px;margin:12px;
+  color:white;
+}
+.header img{height:72px;border-radius:8px;margin-right:12px}
+.header h1{margin:0;font-size:28px;text-shadow:2px 2px 6px rgba(0,0,0,0.4)}
+.header .right-area{margin-left:auto;color:white}
