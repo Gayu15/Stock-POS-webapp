@@ -114,8 +114,7 @@
   </section>
 
   <!-- POS -->
-   <!-- POS -->
-<section id="pos" class="card">
+<section id="pos" class="card"  style="display:none">
   <h2>🛒 POS / Sell</h2>
   <div class="columns-2">
     <!-- Left Column -->
@@ -159,49 +158,7 @@
     </div>
   </div>
 </section>
-  <!--<section id="pos" class="card" style="display:none">
-    <h2>🛒 POS / Sell</h2>
-    <div class="columns-2">
-      <div>
-        <h3>Add item to cart (you can specify payment method per item)</h3>
-        <select id="posSelect" class="small"></select>
-        <input id="posQty" type="number" placeholder="Qty" class="small" />
-        <select id="posPaymentMethod" class="small" title="Payment Method">
-          <option value="cash">Cash</option>
-          <option value="gpay">GPay</option>
-          <option value="phonepe">PhonePe</option>
-          <option value="upi">UPI</option>
-        </select>
-        <input id="posUpi" placeholder="UPI ID (optional)" class="small" />
-        <button onclick="addToCart()" style="margin-top:6px">Add to Cart</button>
-
-        <h4 style="margin-top:12px">Cart</h4>
-        <table>
-          <thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th>Payment</th><th>Action</th></tr></thead>
-          <tbody id="cartTbody"></tbody>
-        </table>
-      </div>
-
-      <div>
-        <h3>Finalize Sale</h3>
-        <input id="posBuyer" placeholder="Buyer name (optional)" class="small" />
-        <input id="posMobile" placeholder="Buyer mobile (optional)" class="small" />
-        <div style="margin-top:8px">
-          <button onclick="completeSale()">Complete & Generate Invoice</button>
-          <button class="ghost" onclick="clearCart()">Clear Cart</button>
-        </div>
-
-        <div style="margin-top:12px">
-          <div><b>Cart Total:</b> ₹<span id="cartTotal">0.00</span></div>
-          <div><b>Cart Profit (est):</b> ₹<span id="cartProfit">0.00</span></div>
-          <div style="margin-top:8px">
-            <button class="small ghost" onclick="printCurrentCartReceipt()">Print Bill (Bill-printer)</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>-->
-
+  
   <!-- Transactions -->
   <section id="transactions" class="card" style="display:none">
     <h2>🧾 Transactions</h2>
@@ -429,4 +386,5 @@
 
 <script src="app.js"></script>
 </body>
+
 </html>
