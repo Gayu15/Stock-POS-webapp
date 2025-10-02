@@ -37,15 +37,17 @@ th{background:#fbfdff}
 /* header */
 .header {
   position: relative;
-  background-image: url('GTM1.JPG');
+  background-image: url('GTM1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 24vh;
   min-height: 120px;
-  display:flex;align-items:center;padding:12px 20px;border-radius:8px;margin:12px;
+  display:flex;align-items:center;padding:20px 10px;border-radius:8px;margin:12px;
   color:white;
 }
+#headerLogo{height:150px;border-radius:100%;margin-right:12px}
 .header img{height:72px;border-radius:8px;margin-right:12px}
 .header h1{margin:0;font-size:28px;text-shadow:2px 2px 6px rgba(0,0,0,0.4)}
 .header .right-area{margin-left:auto;color:white}
+
