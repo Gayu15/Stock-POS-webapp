@@ -282,85 +282,6 @@ function printCurrentCartReceipt(){
   w.document.write('<html><head><title>Receipt</title></head><body>'+html+'</body></html>');
   w.document.close(); w.print();
 }
-/*let cart = [];
-function renderPosOptions(){
-  const sel = document.getElementById('posSelect');
-  sel.innerHTML = '<option value="">-- Select item --</option>';
-  stock.forEach((s, i) => sel.innerHTML += `<option value="${i}">${s.name} (qty:${s.quantity})</option>`);
-}
-function addToCart(){
-  const idx = document.getElementById('posSelect').value;
-  const qty = parseInt(document.getElementById('posQty').value || '0');
-  const method = document.getElementById('posPaymentMethod').value;
-  const upi = document.getElementById('posUpi').value.trim();
-  if(idx === '' || isNaN(qty) || qty <= 0) return alert('Select item and enter qty');
-  const item = stock[idx];
-  if(item.quantity < qty) return alert('Not enough stock in inventory for this item.');
-  const existing = cart.find(c => c.name === item.name && c.paymentMethod === method && (method !== 'upi' || c.upi === upi));
-  if(existing){
-    existing.qty += qty;
-    existing.total = existing.qty * existing.price;
-    existing.profit = (existing.price - existing.actualPrice) * existing.qty;
-  } else {
-    cart.push({
-      name: item.name,
-      qty: qty,
-      price: item.sellingPrice,
-      actualPrice: item.actualPrice,
-      total: qty * item.sellingPrice,
-      profit: (item.sellingPrice - item.actualPrice) * qty,
-      paymentMethod: method,
-      upi: (method === 'upi' ? upi : '')
-    });
-  }
-  renderCart();
-  document.getElementById('posQty').value = '';
-  document.getElementById('posUpi').value = '';
-}
-
-function renderCart(){
-  const tbody = document.getElementById('cartTbody'); tbody.innerHTML = '';
-  let total = 0, profit = 0, totalQty = 0;
-  cart.forEach((c, i) => {
-    total += c.total; profit += c.profit; totalQty += c.qty;
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td style="text-align:left">${c.name}</td><td>${c.qty}</td><td>₹${currency(c.price)}</td><td>₹${currency(c.total)}</td>
-      <td>${c.paymentMethod.toUpperCase()}${c.upi? ' ('+c.upi+')' : ''}</td>
-      <td><button class="small" onclick="removeCartItem(${i})">Remove</button></td>`;
-    tbody.appendChild(tr);
-  });
-  document.getElementById('cartTotal').innerText = currency(total);
-  document.getElementById('cartProfit').innerText = currency(profit);
-}
-function removeCartItem(i){ cart.splice(i,1); renderCart(); }
-function clearCart(){ cart = []; renderCart(); }
-function completeSale(){
-  // buyer optional now
-  const buyer = (document.getElementById('posBuyer').value || '').trim();
-  const mobile = (document.getElementById('posMobile').value || '').trim();
-  if(cart.length === 0) return alert('Cart is empty');
-  for(const c of cart){
-    const invItem = stock.find(s => s.name === c.name);
-    if(!invItem || invItem.quantity < c.qty) return alert(`Not enough stock for ${c.name}`);
-  }
-  for(const c of cart){
-    const invItem = stock.find(s => s.name === c.name);
-    invItem.quantity -= c.qty;
-  }
-  const invoiceNo = shop.invoiceCounter || 1; shop.invoiceCounter = invoiceNo + 1;
-  const dateISO = new Date().toISOString(); const dateDisplay = new Date().toLocaleString();
-  const total = cart.reduce((s,i)=>s+i.total,0);
-  const profit = cart.reduce((s,i)=>s+i.profit,0);
-  const itemsCopy = cart.map(it => ({ name: it.name, qty:it.qty, price: it.price, actualPrice: it.actualPrice, total: it.total, profit: it.profit, paymentMethod: it.paymentMethod, upi: it.upi }));
-  const invoice = { invoiceNo, dateISO, dateDisplay, buyer, mobile, items: itemsCopy, total, profit };
-  transactions.push({ invoiceNo, dateISO, dateDisplay, buyer, mobile, items: itemsCopy, total, profit });
-  invoices.push(invoice);
-  saveAll();
-  renderStock(); renderTransactions(); renderInvoices(); generateReport(); updateDashboard();
-  showInvoicePreview(invoice);
-  cart = []; renderCart();
-  document.getElementById('posBuyer').value = ''; document.getElementById('posMobile').value = '';
-}*/
 
 /* Print current cart (narrow bill) */
 function printCurrentCartReceipt(){
@@ -703,10 +624,12 @@ function renderOpenHistory(){
   if(!shop.openHistory || shop.openHistory.length===0){ list.innerHTML = '<li>No history yet</li>'; return; }
   shop.openHistory.slice().reverse().forEach(entry=>{ const li=document.createElement('li'); li.textContent = `${entry.date} → ${formatINR(entry.amount)}`; list.appendChild(li); });
 }
-
 /* ========== Init ========= */
-(function init(){
+document.addEventListener("DOMContentLoaded", function() {
+  init();
+});
+function init(){
   if(!shop.invoiceCounter) shop.invoiceCounter = 1;
   saveAll(); loadSettings(); renderStock(); renderPosOptions(); renderCart(); renderTransactions(); generateReport(); renderInvoices(); renderLoans(); renderLaptops(); renderExpenses(); updateDashboard(); renderOpenHistory();
-})();
+}
 
